@@ -30,10 +30,18 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         playerMovement.Move();
+        playerMovement.MoveBound();
     }
 
     void LateUpdate()
     {
-        animator.SetBool("IsMoving", playerMovement.IsMoving());
+        if (animator != null)
+        {
+            animator.SetBool("IsMoving", playerMovement.IsMoving());
+        }
+        else
+        {
+            Debug.LogWarning("Animator component on Player is missing!");
+        }
     }
 }

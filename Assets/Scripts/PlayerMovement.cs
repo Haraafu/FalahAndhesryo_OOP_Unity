@@ -18,9 +18,16 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveVelocity = 2 * (maxSpeed / timeToFullSpeed);
-        moveFriction = -2 * (maxSpeed / Mathf.Pow(timeToFullSpeed.x, 2));
-        stopFriction = -2 * (maxSpeed / Mathf.Pow(timeToStop.x, 2));
+
+        // Calculate initial values
+        moveVelocity = new Vector2(2 * (maxSpeed.x / timeToFullSpeed.x), 2 * (maxSpeed.y / timeToFullSpeed.y)
+        );
+
+        moveFriction = new Vector2(-2 * (maxSpeed.x / (timeToFullSpeed.x * timeToFullSpeed.x)), -2 * (maxSpeed.y / (timeToFullSpeed.y * timeToFullSpeed.y))
+        );
+
+        stopFriction = new Vector2(-2 * (maxSpeed.x / (timeToStop.x * timeToStop.x)), -2 * (maxSpeed.y / (timeToStop.y * timeToStop.y))
+        );
     }
 
     public void Move()
@@ -47,15 +54,35 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = Vector2.zero;
         }
     }
-    
+
     public Vector2 GetFriction()
     {
-        return moveDirection == Vector2.zero ? stopFriction : moveFriction;
+        if (moveDirection == Vector2.zero)
+        {
+            return stopFriction;
+        }
+
+        if (moveDirection.x != 0 && moveDirection.y == 0)
+        {
+            return new Vector2(moveFriction.x, 0);
+        }
+
+        if (moveDirection.y != 0 && moveDirection.x == 0)
+        {
+            return new Vector2(0, moveFriction.y);
+        }
+
+        return moveFriction;
     }
 
     public void MoveBound()
     {
-        // Implement boundary check if needed
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+
+        position.x = Mathf.Clamp(position.x, 0.02f, 0.95f);
+        position.y = Mathf.Clamp(position.y, 0.02f, 0.95f);
+
+        transform.position = Camera.main.ViewportToWorldPoint(position);
     }
 
     public bool IsMoving()
