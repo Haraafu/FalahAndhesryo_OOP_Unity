@@ -26,30 +26,23 @@ public class WeaponPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Jika objek yang terkena collider memiliki tag "Player"
         if (other.gameObject.CompareTag("Player"))
         {
-            // Hapus senjata lama jika ada
             if (currentWeapon != null)
             {
                 TurnVisual(false, currentWeapon);
             }
 
-            // Set senjata ini sebagai senjata baru yang dipegang pemain
             currentWeapon = weapon;
             weapon.transform.SetParent(other.transform);
             weapon.transform.localPosition = new Vector3(0, 0, 1);
 
-            // Mengaktifkan visual senjata setelah diambil
             TurnVisual(true);
-
-            Debug.Log("Player successly picked up weapon");
         }
     }
 
     void TurnVisual(bool on)
     {
-        // Mengaktifkan atau menonaktifkan semua komponen visual dari weapon
         if (weapon != null)
         {
             weapon.gameObject.SetActive(on);
@@ -58,7 +51,6 @@ public class WeaponPickup : MonoBehaviour
 
     void TurnVisual(bool on, Weapon weapon)
     {
-        // Overload untuk TurnVisual, memungkinkan pengaktifan atau penonaktifan objek weapon tertentu
         if (weapon != null)
         {
             weapon.gameObject.SetActive(on);

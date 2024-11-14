@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] private float speed; // Seberapa cepat Portal Asteroid Bergerak
-    [SerializeField] private float rotateSpeed; // Seberapa cepat Portal Asteroid Berputar
+    [SerializeField] private float speed; 
+    [SerializeField] private float rotateSpeed; 
 
-    private Vector2 newPosition; // Adalah posisi yang dapat di-travel oleh asteroid
+    private Vector2 newPosition; 
 
     void Start()
     {
-        ChangePosition(); // Inisialisasi nilai newPosition
+        ChangePosition(); 
     }
 
     void Update()
     {
-        // Cek apakah jarak antara posisi asteroid saat ini dengan posisi newPosition < 0.5
         if (Vector2.Distance(transform.position, newPosition) < 0.5f)
         {
             ChangePosition();
@@ -47,8 +46,8 @@ public class Portal : MonoBehaviour
 
     void ChangePosition()
     {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); // Bottom-left
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); // Top-right
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); 
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); 
 
         float x = Random.Range(min.x, max.x);
         float y = Random.Range(min.y, max.y);
