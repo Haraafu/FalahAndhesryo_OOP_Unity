@@ -1,39 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-
 public class AttackComponent : MonoBehaviour
 {
-    [SerializeField] private Bullet bullet;
-    [SerializeField] private float damage;
-    private HitboxComponent hitboxComponent;
-    private InvicibilityComponent invicibilityComponent;
+    public Bullet bullet;
+    public int damage;
 
-    void Awake()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        bullet = GetComponent<Bullet>();
-        damage = bullet.damage;
-    }
+        if (other.gameObject.CompareTag(gameObject.tag)) return;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {   
-        if (other.gameObject.CompareTag(gameObject.tag))
+        if (other.GetComponent<HitboxComponent>() != null)
         {
-            return;
+            HitboxComponent hitbox = other.GetComponent<HitboxComponent>();
+
+            if (bullet != null)
+            {
+                hitbox.Damage(bullet.damage);
+            }
+
+            hitbox.Damage(damage);
         }
 
-        invicibilityComponent = other.GetComponent<InvicibilityComponent>();
-        hitboxComponent = other.GetComponent<HitboxComponent>();
-        
-        if (hitboxComponent != null)
+        if (other.GetComponent<InvincibilityComponent>() != null)
         {
-            if (invicibilityComponent != null)
-            {
-                hitboxComponent.Damage(damage);
-                invicibilityComponent.Flashing();
-            } 
+            other.GetComponent<InvincibilityComponent>().TriggerInvincibility();
         }
     }
 }

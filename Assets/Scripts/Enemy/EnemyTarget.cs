@@ -1,30 +1,66 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTarget : Enemy
 {
-    public float speed = 5f;
-    private Transform playerTransform;
-    private Rigidbody2D rb;
+    public float speed = 8f;
+
+    private Transform player;
+    Rigidbody2D rb;
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Awake()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        rb.velocity = direction * speed;
+        PickRandomPositions();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void FixedUpdate()
+    {
+        if (player != null)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x);
+
+            rb.rotation = angle;
+            rb.velocity = speed * Time.deltaTime * direction;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
+    }
+
+    private void PickRandomPositions()
+    {
+        Vector2 randPos;
+        Vector2 dir;
+
+        if (Random.Range(-1, 1) >= 0)
+        {
+            dir = Vector2.right;
+        }
+        else
+        {
+            dir = Vector2.left;
+        }
+
+        if (dir == Vector2.right)
+        {
+            randPos = new(1.1f, Random.Range(0.1f, 0.95f));
+        }
+        else
+        {
+            randPos = new(-0.01f, Random.Range(0.1f, 0.95f));
+        }
+
+        transform.position = Camera.main.ViewportToWorldPoint(randPos) + new Vector3(0, 0, 10);
     }
 }

@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    float health;
+    public int maxHealth = 10;
+
+    private int health;
 
     void Awake()
     {
         health = maxHealth;
     }
 
-    void getHealth(float health)
+    public void Subtract(int amount)
     {
-        this.health = health;
-    }
-
-    public float Subtract(float value)
-    {
-        health -= value;
+        health -= amount;
 
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+    }
 
+    public int GetHealth()
+    {
         return health;
     }
 }

@@ -1,37 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-
 public class HitboxComponent : MonoBehaviour
 {
-    [SerializeField] private HealthComponent healthComponent;
-    [SerializeField] private InvicibilityComponent invicibilityComponent;
-    private Bullet bullet;
+    [SerializeField]
+    HealthComponent health;
 
-    void Awake()
+    Collider2D area;
+
+    private InvincibilityComponent invincibilityComponent;
+
+
+    void Start()
     {
-        healthComponent = GetComponent<HealthComponent>();
-        invicibilityComponent = GetComponent<InvicibilityComponent>();
-        bullet = GetComponent<Bullet>();
+        area = GetComponent<Collider2D>();
+        invincibilityComponent = GetComponent<InvincibilityComponent>();
     }
 
-    public void Damage(float damage)
+    public void Damage(Bullet bullet)
     {
-        if (invicibilityComponent != null && invicibilityComponent.isInvincible == false)
-        {
-            healthComponent.Subtract(damage);
-            invicibilityComponent.Flashing();
-        }
+        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+
+        if (health != null)
+            health.Subtract(bullet.damage);
     }
 
-    public void Damage(float damage, GameObject target)
+    public void Damage(int damage)
     {
-        if (invicibilityComponent != null && invicibilityComponent.isInvincible == false)
-        {
-            healthComponent.Subtract(bullet.damage);
-            invicibilityComponent.Flashing();
-        }
+        if (invincibilityComponent != null && invincibilityComponent.isInvincible) return;
+
+        if (health != null)
+            health.Subtract(damage);
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] private float speed; 
-    [SerializeField] private float rotateSpeed; 
+    [SerializeField] private float speed;
+    [SerializeField] private float rotateSpeed;
 
-    private Vector2 newPosition; 
+    private Vector2 newPosition;
 
     void Start()
     {
-        ChangePosition(); 
+        ChangePosition();
     }
 
     void Update()
@@ -46,8 +46,8 @@ public class Portal : MonoBehaviour
 
     void ChangePosition()
     {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); 
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); 
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
         float x = Random.Range(min.x, max.x);
         float y = Random.Range(min.y, max.y);

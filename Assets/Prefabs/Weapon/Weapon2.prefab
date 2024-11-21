@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootIntervalInSeconds: 0.2
-  bullet: {fileID: 6248367811378604312}
+  bullet: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
   bulletSpawnPoint: {fileID: 760599877447065054}
   parentTransform: {fileID: 0}
 --- !u!95 &3389424795305787187
@@ -164,6 +164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1817554108836724270}
     m_Modifications:
+    - target: {fileID: -8474848797450610226, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
     - target: {fileID: 2393432088550718403, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
       propertyPath: m_Size.x
       value: 0.083333336
@@ -290,16 +294,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91faf12a6738ab44eaa642273f997f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8732498622512151170, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
+  bullet: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
   damage: 100
---- !u!114 &6248367811378604312 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8732498622512151170, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
-  m_PrefabInstance: {fileID: 3424627227702612890}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5638513838916202064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a46828cf1ebcfe46bb9dde680eb6e77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

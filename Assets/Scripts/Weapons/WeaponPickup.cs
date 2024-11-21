@@ -19,7 +19,7 @@ public class WeaponPickup : MonoBehaviour
     void Start()
     {
         if (weapon != null)
-        {  
+        {
             TurnVisual(false);
         }
     }

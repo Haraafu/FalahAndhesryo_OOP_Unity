@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4827338277428019067}
   m_Layer: 0
   m_Name: EnemyForward
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4dcea1fa1c28c42857b0ad5cfe5f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
+  enemyKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8649081514379826556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91faf12a6738ab44eaa642273f997f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8732498622512151170, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
+  bullet: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
   damage: 100
 --- !u!114 &-7871250431023884129
 MonoBehaviour:
@@ -172,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d10ce5465d7e04eac648b7893a0b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
 --- !u!114 &7500201758789410651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e909237759f0d44b173397e7aa08e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: -7871250431023884129}
-  invicibilityComponent: {fileID: 0}
+  health: {fileID: -7871250431023884129}
 --- !u!61 &4827338277428019067
 BoxCollider2D:
   m_ObjectHideFlags: 0

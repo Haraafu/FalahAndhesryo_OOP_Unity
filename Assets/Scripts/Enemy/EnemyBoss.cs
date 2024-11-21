@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class EnemyBoss : Enemy
 {
-    public float speed = 5f;
+    private float speed = 5f;
     private float moveDirection;
-    private float topBorder;
-    private float bottomBorder;
-    private float leftBorder;
-    private float rightBorder;
-    public Weapon weapon; // asumsikan ada class yang bernama Weapon untuk menembak
+    private Vector2 position;
+    float topBorder;
+    float bottomBorder;
+    float leftBorder;
+    float rightBorder;
+
     void Start()
     {
-        Camera mainCamera = Camera.main;
-        topBorder = mainCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
-        bottomBorder = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
-        leftBorder = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
-        rightBorder = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+        topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+        bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
+        leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
+        rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
 
+        // Using float range and checking condition accordingly
         if (Random.Range(0f, 1f) > 0.5f)
         {
             moveDirection = 1;
-            transform.position = new Vector2(leftBorder, Random.Range(bottomBorder, topBorder));
         }
         else
         {
             moveDirection = -1;
-            transform.position = new Vector2(rightBorder, Random.Range(bottomBorder, topBorder));
         }
+
+        if (moveDirection == 1)
+        {
+            position = new Vector2(leftBorder, Random.Range(bottomBorder, topBorder));
+        }
+        else
+        {
+            position = new Vector2(rightBorder, Random.Range(bottomBorder, topBorder));
+        }
+
+        transform.position = position; // Initially set the position
     }
 
     void Update()
     {
-        transform.position += new Vector3(moveDirection * speed * Time.deltaTime, 0, 0);
+        position.x += moveDirection * speed * Time.deltaTime;
+        transform.position = position; // Apply position change
 
-        if (transform.position.x >= rightBorder)
+        // Check for boundaries and reverse direction if necessary
+        if (transform.position.x >= rightBorder || transform.position.x <= leftBorder)
         {
-            moveDirection = -1;
+            moveDirection *= -1; // Flip the movement direction
         }
-        else if (transform.position.x <= leftBorder)
-        {
-            moveDirection = 1;
-        }
-
-        // Menembak secara periodik
-        // if (weapon != null)
-        // {
-        //     weapon.FixedUpdate();
-        // }
     }
 }
-

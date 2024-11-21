@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2692145541762472453}
   m_Layer: 0
   m_Name: EnemyHorizontal
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc1b04acb466d140b41bba82f08bb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
+  enemyKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3737772247417174570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91faf12a6738ab44eaa642273f997f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8732498622512151170, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
+  bullet: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
   damage: 150
 --- !u!114 &7873086540679006421
 MonoBehaviour:
@@ -185,8 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e909237759f0d44b173397e7aa08e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: 7873086540679006421}
-  invicibilityComponent: {fileID: 0}
+  health: {fileID: 7873086540679006421}
 --- !u!70 &2692145541762472453
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
