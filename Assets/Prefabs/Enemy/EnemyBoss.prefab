@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 918995868260480189}
   - component: {fileID: 3628456917893297849}
-  - component: {fileID: 5023794330341464735}
   - component: {fileID: 8837877687875093418}
+  - component: {fileID: 4732288784584810907}
   - component: {fileID: 4262824665814323427}
   - component: {fileID: 712216352505386129}
   - component: {fileID: 9121372116479548809}
@@ -67,22 +67,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5023794330341464735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6763633670614780236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9efca8e6256064e84dcf7288fa1cc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkingCount: 7
-  blinkInterval: 0.1
-  blinkMaterial: {fileID: 2100000, guid: 7476c819b1318ef4996e12a6337e4b92, type: 2}
-  isInvincible: 0
 --- !u!114 &8837877687875093418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +81,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6058814372803652389, guid: 4d4ba2952b27b0c46882ea2b00a01b0f, type: 3}
   damage: 200
+--- !u!114 &4732288784584810907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763633670614780236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5276fee77e3d88541bee6a6605959a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkingCount: 7
+  blinkInterval: 0.1
+  blinkMaterial: {fileID: 2100000, guid: 7476c819b1318ef4996e12a6337e4b92, type: 2}
+  isInvincible: 0
 --- !u!114 &4262824665814323427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d10ce5465d7e04eac648b7893a0b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 100
 --- !u!114 &712216352505386129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 4262824665814323427}
+  OnHitboxCollide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &9121372116479548809
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -187,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1a36298fe6f9d419ebe7d6d005676f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 5
   enemyKilledEvent:
     m_PersistentCalls:
       m_Calls: []

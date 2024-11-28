@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="To InfiniTY And Beyond" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="-unity-font: url(&apos;project://database/Assets/Font/ARCADECLASSIC.TTF?fileID=12800000&amp;guid=3b9c7c07c42ccfc40b6136595f0d42bb&amp;type=3#ARCADECLASSIC&apos;); -unity-text-align: middle-center; -unity-font-definition: url(&apos;project://database/Assets/Font/ARCADECLASSIC%20SDF.asset?fileID=11400000&amp;guid=d872d42b34123b543a04ecbc27f6d64c&amp;type=2#ARCADECLASSIC SDF&apos;); height: 137px; font-size: 24px; color: rgb(255, 255, 255); -unity-text-outline-width: 247px; -unity-font-style: bold; white-space: nowrap;" />
+    </ui:VisualElement>
+</ui:UXML>

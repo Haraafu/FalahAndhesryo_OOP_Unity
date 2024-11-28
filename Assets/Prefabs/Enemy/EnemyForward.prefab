@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7526601595882147587}
   - component: {fileID: 8332342144758102194}
   - component: {fileID: 4879038534245700944}
-  - component: {fileID: 8649081514379826556}
+  - component: {fileID: 5702979166125150446}
   - component: {fileID: 3999962348062573050}
   - component: {fileID: -3976081641208675034}
   - component: {fileID: -7871250431023884129}
@@ -78,11 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4dcea1fa1c28c42857b0ad5cfe5f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 2
   enemyKilledEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8649081514379826556
+--- !u!114 &5702979166125150446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9111548801878848803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9efca8e6256064e84dcf7288fa1cc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5276fee77e3d88541bee6a6605959a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blinkingCount: 7
@@ -190,6 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: -7871250431023884129}
+  OnHitboxCollide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &4827338277428019067
 BoxCollider2D:
   m_ObjectHideFlags: 0

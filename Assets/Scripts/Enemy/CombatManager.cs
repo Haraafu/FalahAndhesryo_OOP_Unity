@@ -1,70 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
     public EnemySpawner[] enemySpawners;
+
     public float timer = 0;
     [SerializeField] private float waveInterval = 5f;
-    public int waveNumber = 1;
+
+    public int waveNumber = 0;
+
     public int totalEnemies = 0;
+    public int points = 0;
 
-    void Start()
+    private void OnEnable()
     {
-        SetupSpawners();
-    }
-
-    void Update()
-    {
-        ManageWaveProgression();
-    }
-
-    private void SetupSpawners()
-    {
-        foreach (var spawner in enemySpawners)
+        foreach (EnemySpawner spawner in enemySpawners)
         {
-            ConfigureSpawner(spawner, true);
-            if (spawner.isSpawning)
-            {
-                totalEnemies += spawner.defaultSpawnCount;
-            }
+            spawner.combatManager = this;
         }
     }
 
-    private void ProcessNextWave()
-    {
-        waveNumber++;
-        foreach (var spawner in enemySpawners)
-        {
-            ConfigureSpawner(spawner, true);
-            spawner.ResetSpawning();
-            if (spawner.isSpawning)
-            {
-                totalEnemies += spawner.spawnCount;
-            }
-            spawner.InitializeTimer();
-        }
-        timer = 0;  // Reset the timer for the new wave
-    }
-
-    public void ConfigureSpawner(EnemySpawner spawner, bool activate)
-    {
-        if (spawner.spawnedEnemy != null && spawner.spawnedEnemy.level <= waveNumber)
-        {
-            spawner.isSpawning = activate;
-        }
-    }
-
-    private void ManageWaveProgression()
+    private void FixedUpdate()
     {
         if (totalEnemies == 0)
-        {
             timer += Time.deltaTime;
-            if (timer >= waveInterval)
+
+        if (timer >= waveInterval)
+        {
+            foreach (EnemySpawner spawner in enemySpawners)
             {
-                ProcessNextWave();
+                if (spawner.spawnedEnemy.GetLevel() <= waveNumber && !spawner.isSpawning)
+                {
+                    spawner.ResetSpawnCount();
+
+                    totalEnemies += spawner.spawnCount;
+
+                    spawner.SpawnEnemy();
+                }
             }
+
+            waveNumber++;
+            timer = 0;
         }
+    }
+
+    public void IncreaseKill()
+    {
+        totalEnemies--;
     }
 }

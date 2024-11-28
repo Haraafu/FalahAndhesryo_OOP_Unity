@@ -279,7 +279,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e909237759f0d44b173397e7aa08e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: -7255995027787278631}
+  health: {fileID: -7255995027787278631}
+  OnHitboxCollide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-7255995027787278631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d10ce5465d7e04eac648b7893a0b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 1000
 --- !u!114 &161132398663619195
 MonoBehaviour:
   m_ObjectHideFlags: 0
