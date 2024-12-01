@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6058814372803652389}
-  damage: 100
+  damage: 50
 --- !u!70 &3459101743260327464
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

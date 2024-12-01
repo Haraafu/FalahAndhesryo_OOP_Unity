@@ -98,7 +98,7 @@ MonoBehaviour:
   enemyKilledEvent:
     m_PersistentCalls:
       m_Calls: []
-  speed: 10
+  speed: 15
 --- !u!212 &8292140204960059024
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class TextDisplay : MonoBehaviour
     // Variables for game state
     public int health = 0;
     public int points = 0;
-    public int wave = 0;
+    public int wave = 1;
     public int enemies = 0;
 
     // UI Labels

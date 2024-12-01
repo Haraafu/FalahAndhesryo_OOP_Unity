@@ -215,6 +215,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4313129576408654257, guid: d087641122246a943aa2d7b54f064796, type: 3}
     - target: {fileID: 4313129576408654257, guid: d087641122246a943aa2d7b54f064796, type: 3}
+      propertyPath: waveNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313129576408654257, guid: d087641122246a943aa2d7b54f064796, type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 0}

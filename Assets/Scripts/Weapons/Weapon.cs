@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
             Debug.LogError("Bullet prefab is not set.");
             return null;
         }
-        Bullet bulletInstance = Instantiate(bullet); // Pastikan instance yang benar di-set sebagai child.
+        Bullet bulletInstance = Instantiate(bullet); 
         bulletInstance.ObjectPool = objectPool;
         return bulletInstance;
     }
@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
 
     void OnDestroyBullet(Bullet bullet)
     {
-        Destroy(bullet.gameObject); // Hancurkan bullet, bukan weapon.
+        Destroy(bullet.gameObject); 
     }
 
     void FixedUpdate()
